@@ -1,0 +1,29 @@
+apply plugin: 'java'
+
+
+repositories{
+	mavenCentral()
+}
+dependencies{
+	compile group: 'org.apache.commons',
+			name: 'commons-csv',
+			version: '1.4'
+	
+
+}
+buildscript {
+    repositories {
+        flatDir dirs: '/home/justin/Desktop/csci2020/csci2020u_/proguard5.3.2/lib'
+    }
+    dependencies {
+        classpath ':proguard'
+    }
+
+}
+task proguard(type: proguard.gradle.ProGuardTask){
+
+	configuration 'proguard.cfg'
+
+	injars 'build/libs/lab03.jar'
+	outjars 'build/libs/lab03.min.jar'
+}
